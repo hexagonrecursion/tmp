@@ -1,8 +1,15 @@
-name: Manually triggered workflow
+name: Hello push
 on: workflow_dispatch
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Hello world!"
+        git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} repo
+        cd repo
+        date > hello.txt
+        git add .
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git commit -m hello
+        git push
