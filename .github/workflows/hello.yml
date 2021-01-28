@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} repo
+        git clone https://x-access-token:${{ github.token }}@github.com/${{ github.repository }} repo
         cd repo
         date > hello.txt
         git add .
